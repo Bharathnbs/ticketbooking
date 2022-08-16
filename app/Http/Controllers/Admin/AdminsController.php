@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Location;
+use App\Models\Theatre;
 
-class AdminsController extends Controller
+class AdminsController 
 {
     // public function create()
     // {
@@ -28,7 +29,7 @@ class AdminsController extends Controller
 
     public function index()
     {
-        return view ('admin.admins.index', ['locations' => Location::get()]);
+        return view ('admin.admins.index');
     }
     
 }

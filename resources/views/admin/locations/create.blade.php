@@ -7,12 +7,12 @@
             </ul>
     </div>
 @endif
-    <form action="{{route('locations.store')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.locations.store')}}" method="post">
         @csrf
         <label >State Name</label><br>
-        <input type="text" name="state_name"><br>   
+        <input type="text" name="state"><br>   
         <label >Location Name</label><br>
-        <input type="text" name="location_name"><br>
+        <input type="text" name="name"><br>
         <input type="submit" value="submit">
     </form>
 
