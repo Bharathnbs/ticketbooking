@@ -10,4 +10,8 @@ class Admin extends Model
     protected $guarded = [];
     
     use HasFactory;
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
 }

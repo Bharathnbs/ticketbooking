@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use App\Models\location;
@@ -22,5 +22,10 @@ class LocationsController extends Controller
         $location = new location($validated);
         $location->save();
        return redirect()->route('admins.index');
+    }
+
+    public function edit(Request $request, $id)
+    {
+        return view('locations.update')
     }
 }
