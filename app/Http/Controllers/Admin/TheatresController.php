@@ -11,7 +11,7 @@ class TheatresController
     public function index()
     {
         $theatres = Theatre::with('location')->get();
-        // dd($theatres->toArray());
+        // dd($theatres);
         return view ('admin.theatres.index', ['theatres' => $theatres]);
     }
     public function create()

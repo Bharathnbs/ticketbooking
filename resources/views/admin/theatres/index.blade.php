@@ -17,4 +17,4 @@
         @endforeach
         <a href="{{route('admin.theatres.create')}}">theatre create</a>
     </tbody>
-</table><hr>
+</table>

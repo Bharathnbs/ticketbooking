@@ -44,6 +44,12 @@ Route::prefix('admin')->name('admin.')->group(function() {
         });
 
         Route::controller(MoviesController::class)->prefix('movies')->name('movies.')->group(function (){
+                Route::get('/', 'index')->name('index');
                 Route::get('/create', 'create')->name('create');
+                Route::post('/create', 'store')->name('store');
+                Route::get('/{id}/update', 'edit')->name('edit');
+                Route::post('/{id}/update', 'update')->name('update');
+                Route::get('/{id}/delete', 'delete')->name('delete');
+
         });
 });
