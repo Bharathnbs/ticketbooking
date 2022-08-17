@@ -26,7 +26,7 @@ class LocationsController
 
         $location = new Location($validated);
         $location->save();
-       return redirect()->route('admin.admins.index');
+       return redirect()->route('admin.locations.index');
     }
 
     public function edit(Request $request, $id)

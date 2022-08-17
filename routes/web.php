@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminsController;
 use App\Http\Controllers\Admin\LocationsController;
 use App\Http\Controllers\Admin\TheatresController;
 use App\Http\Controllers\Admin\MoviesController;
+use App\Http\Controllers\Admin\BookingsController;
 
 // Route::middleware('guest')->controller(UsersloginController::class)->prefix('login')->name('login')->group(function () {
 //         Route::get('/', 'login');
@@ -50,6 +51,14 @@ Route::prefix('admin')->name('admin.')->group(function() {
                 Route::get('/{id}/update', 'edit')->name('edit');
                 Route::post('/{id}/update', 'update')->name('update');
                 Route::get('/{id}/delete', 'delete')->name('delete');
+        });
 
+        Route::controller(BookingsController::class)->prefix('bookings')->name('bookings.')->group(function (){
+                Route::get('/', 'index')->name('index');
+                Route::get('/create', 'create')->name('create');
+                Route::post('/create', 'store')->name('store');
+                Route::get('/{id}/update', 'edit')->name('edit');
+                Route::post('/{id}/update', 'update')->name('update');
+                Route::get('/{id}/delete', 'delete')->name('delete');
         });
 });
