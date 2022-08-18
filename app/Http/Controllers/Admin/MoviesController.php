@@ -29,9 +29,14 @@ class MoviesController
          'time' => 'required',
          'date' => 'required',
          'price' => 'required',
+         'images' => 'required'
       ]);
+      $file = $validated['images'];
+      $filename = substr(md5(rand()), 0, 19) . '.' . $file->getClientOriginalExtension();
+      copy($file->getRealPath(), public_path('/images/'.$filename));
 
       $movie = new Movie($validated);
+      $movie->images = $filename;
       $movie->save();
       return redirect()->route('admin.movies.index');
    }

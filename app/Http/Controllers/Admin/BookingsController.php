@@ -15,10 +15,13 @@ class BookingsController
    {
       $users = User::get();
       $locations = Location::get();
-      $theatres = Theatre::get();
+      Session::put('loc',$locations[1]);
+      $loc = Session::get('loc');
+      $theatres = Theatre::where('location_id','=',$loc['id'])->get();
       $movies = Movie::get();
-      Session::put('loc',[$locations]);
-      dd(Session::get('loc'));
+
+
+         // dd($loc);   
 
     return view ('admin.bookings.create', ['users' => $users, 'theatres' => $theatres, 'locations' => $locations, 'movies' => $movies]);
    }  

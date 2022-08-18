@@ -30,12 +30,7 @@
             @endforeach
         </select><br>
 
-        <label >Movie name</label><br>
-        <select name="movie_id">
-            @foreach($movies as $movie)
-            <option value="{{$movie->id}}">{{$movie->name}}</option>
-            @endforeach
-        </select><br>
+      
 
         <label >quantity</label><br>
         <input type="number" name="quantity"><br>
