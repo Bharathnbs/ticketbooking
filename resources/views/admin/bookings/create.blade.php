@@ -21,10 +21,9 @@
             @foreach($locations as $loc)
             <option value="{{$loc->id}}">{{$loc->name}}</option>
             @endforeach
+         
         </select><br>
-
         <label >theatre name</label><br>
-        @if($theatres->location_id == $)
         <select name="theatre_id">
             @foreach($theatres as $theatre)
             <option value="{{$theatre->id}}">{{$theatre->name}}</option>
@@ -38,12 +37,13 @@
             @endforeach
         </select><br>
 
-        <label >quantity</label>
-        <input type="number" name="quantity">
+        <label >quantity</label><br>
+        <input type="number" name="quantity"><br>
 
-        <label >total price</label>
-        <input type="text" name="quantity">
+        <label >total price</label><br>
+        <input type="text" name="price"><br>
 
-        <input type="submit" value="submit">
+        <input type="submit" value="booking">
+    
     </form>
 

@@ -28,6 +28,8 @@ class TheatresController
         ]);
 
         $theatre = new Theatre($validated);
+        // $request->session()->put('loc',$request->input('location_id'));
+        // $loc = $request->session()->get('loc');
         $theatre->save();
         return redirect()->route('admin.theatres.index');
 

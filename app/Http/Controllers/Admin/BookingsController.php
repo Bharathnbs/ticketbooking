@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use Illuminate\Support\Facades\Session;
 
 use Illuminate\Http\Request;
 use App\Models\Location;
@@ -16,6 +17,9 @@ class BookingsController
       $locations = Location::get();
       $theatres = Theatre::get();
       $movies = Movie::get();
-    return view ('admin.bookings.create', ['users' => $users, 'locations' => $locations, 'theatres' => $theatres, 'movies' => $movies]);
+      Session::put('loc',[$locations]);
+      dd(Session::get('loc'));
+
+    return view ('admin.bookings.create', ['users' => $users, 'theatres' => $theatres, 'locations' => $locations, 'movies' => $movies]);
    }  
 }
