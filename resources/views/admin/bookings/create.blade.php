@@ -30,15 +30,29 @@
             @endforeach
         </select><br>
 
-      
+        <label >movie name</label><br>
+        <select name="movie_id">
+            @foreach($movies as $movie)
+            <option value="{{$movie->id}}">{{$movie->name}}</option>
+            @endforeach
+        </select><br> 
 
         <label >quantity</label><br>
-        <input type="number" name="quantity"><br>
+        <input id="quantity" type="number" name="quantity"><br>
 
-        <label >total price</label><br>
-        <input type="text" name="price"><br>
-
+        <label >price</label><br>
+        @foreach($movies as $movie)
+        <input id="price" type="text" name="price" value="{{$movie->price}}"><br>
+        @endforeach
+        <label > total price</label><br>
+        <input type="text" name="total" id="total"><br>
         <input type="submit" value="booking">
     
     </form>
 
+<script>
+    var quantity = document.getElementById('quantity').value = 2;
+    console.log(quantity);
+    var price = document.getElementById('price').value ;
+    document.getElementById('total').value = price * quantity;
+</script>
