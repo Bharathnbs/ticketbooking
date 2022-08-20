@@ -21,7 +21,7 @@ class AdminLoginController
         ]);
         // dd($validated);
 
-        if(auth::attempt($validated))
+        if(Auth::guard('admin')->attempt($validated))
         {
             
             $request->session()->regenerate();

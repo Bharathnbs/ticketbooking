@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use App\Models\User;
 
 
-class UsersController extends Controller
+class UsersController
 {
     public function create()
     {
-       return view('users.create') ;
+       return view('user.users.create') ;
     }
     public function store(Request $request)
     {
@@ -18,11 +18,13 @@ class UsersController extends Controller
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'phone' => 'required'
+            'phone' => 'required|max:10'
         ]);
 
-        $user = new user($validated);
+        $user = new User($validated);
+        // $user->password = md5(substr($validated['password'],0,12));
         $user->save();
+        return redirect()->route('user.dashboard.index');
     }
 }
 

@@ -1,32 +1,34 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-
-class UsersLoginController extends Controller
+class AuthController 
 {
     public function login()
     {
-        return view('loginpage.index');
+        return view('user.login.index');
     }
 
     public function authenticate(Request $request )
     {
+
         $validated = $request->validate([
             'email' => 'required|email', 
             'password' =>  'required'
         ]);
 
-        if(auth::attempt($validated))
+            dd(Auth::guard('users')->attempt($validated));
+
+        if(Auth::attempt($validated))
         {
-            
+    
             $request->session()->regenerate();
 
-            return redirect()->route('users.create');
+            return redirect()->route('user.users.create');
         }
         
         return back()->withErrors([

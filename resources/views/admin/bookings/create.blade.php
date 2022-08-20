@@ -51,7 +51,7 @@
     </form>
 
 <script>
-    var quantity = document.getElementById('quantity').value = 2;
+    var quantity = document.getElementById('quantity').value ;
     console.log(quantity);
     var price = document.getElementById('price').value ;
     document.getElementById('total').value = price * quantity;
