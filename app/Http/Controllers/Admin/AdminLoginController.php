@@ -19,7 +19,7 @@ class AdminLoginController
             'email' => 'required|email', 
             'password' =>  'required'
         ]);
-        // dd($validated);
+        // dd(Auth::guard('admin')->attempt($validated));
 
         if(Auth::guard('admin')->attempt($validated))
         {

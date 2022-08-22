@@ -7,7 +7,7 @@
             </ul>
     </div>
 @endif
-    <form action="{{route('admin.movies.update', $movie->id)}}" method="post">
+    <form action="{{route('admin.movies.update', $movie->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         <label >City Name</label><br>
         <select name="theatre_id">
@@ -25,6 +25,8 @@
         <input type="date" name="date" value="{{old('name', $movie->date)}}"><br>
         <label >price</label><br>
         <input type="text" name="price" value="{{old('name', $movie->price)}}"><br>
+        <input type="file" name="images"><br>
+
         <input type="submit" value="submit">
     </form>
 

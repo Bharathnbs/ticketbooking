@@ -56,9 +56,15 @@ class MoviesController
             'time' => 'required',
             'date' => 'required',
             'price' => 'required',
+            'images' => 'required'
          ]);
          $movie = Movie::find($id);
-         $movie->update($validated);
+         $file = $validated['images'];
+         $filename = substr(md5(rand()), 0, 19) . '.' . $file->getClientOriginalExtension();
+         $movie->images = $filename;
+         $movie->save();
+         copy($file->getRealPath(), public_path('/images/'.$filename));
+
          return redirect()->route('admin.movies.index');
    }
    public function delete(Request $request, $id)         

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\UsersController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\User\UserBookingsController;
 use App\Http\Controllers\Admin\AdminsController;
 use App\Http\Controllers\Admin\LocationsController;
 use App\Http\Controllers\Admin\TheatresController;
@@ -11,6 +12,8 @@ use App\Http\Controllers\Admin\MoviesController;
 use App\Http\Controllers\Admin\BookingsController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\CustomersController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+
 
 
 
@@ -30,6 +33,11 @@ Route::prefix('user')->name('user.')->group(function (){
         Route::controller(DashboardController::class)->prefix('dashboard')->name('dashboard.')->group(function(){
                 Route::get('/', 'index')->name('index');
         });
+
+        Route::controller(UserBookingsController::class)->prefix('bookings')->name('bookings.')->group(function(){
+                Route::get('/{id}/create', 'create')->name('create');
+                Route::post('/{id}/create', 'store')->name('store');
+        });
 });
 
 
@@ -39,6 +47,12 @@ Route::prefix('admin')->name('admin.')->group(function() {
                 Route::get('/', 'login');
                 Route::post('/', 'authenticate')->name('.post');
         });
+
+        Route::controller(AdminDashboardController::class)->prefix('dashboard')->name('dashboard.')->group(function(){
+                Route::get('/', 'index')->name('index');
+        });
+
+
 
         Route::controller(CustomersController::class)->prefix('users')->name('users.')->group(function (){
                 Route::get('/', 'index')->name('index');

@@ -17,12 +17,13 @@ class BookingsController
       $locations = Location::get();
       Session::put('loc',$locations[1]->id);
       $loc = Session::get('loc');
+      // dd($loc[0]->name);
       $theatres = Theatre::where('location_id','=',$loc)->get();
-      Session::put('tl',$theatres[1]->id);
-      $tl = Session::get('tl');
+      Session::put('tl',$theatres[0]->id);
+      $tl = Session::get('tl'); 
+      // dd($tl);
       $movies = Movie::where('theatre_id','=',$tl)->get();
-         // dd($movies);   
-
+         // dd($movies);
     return view ('admin.bookings.create', ['users' => $users, 'theatres' => $theatres, 'locations' => $locations, 'movies' => $movies]);
    }  
 }

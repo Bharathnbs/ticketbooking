@@ -21,8 +21,8 @@
             @foreach($locations as $loc)
             <option value="{{$loc->id}}">{{$loc->name}}</option>
             @endforeach
-         
         </select><br>
+        
         <label >theatre name</label><br>
         <select name="theatre_id">
             @foreach($theatres as $theatre)
@@ -51,7 +51,7 @@
     </form>
 
 <script>
-    var quantity = document.getElementById('quantity').value ;
+    var quantity = document.getElementById('quantity').value = 0;
     console.log(quantity);
     var price = document.getElementById('price').value ;
     document.getElementById('total').value = price * quantity;
