@@ -19,7 +19,7 @@ class BookingsController
       $loc = Session::get('loc');
       // dd($loc[0]->name);
       $theatres = Theatre::where('location_id','=',$loc)->get();
-      Session::put('tl',$theatres[0]->id);
+      Session::put('tl',$theatres[1]->id);
       $tl = Session::get('tl'); 
       // dd($tl);
       $movies = Movie::where('theatre_id','=',$tl)->get();

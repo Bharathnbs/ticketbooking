@@ -8,9 +8,10 @@ use App\Models\Movie;
 
 class MoviesController
 {
-   public function index()
+   public function index(Request $request)
    {
-    $movies = Movie::with('theatres')->get();
+    $movies = Movie::with('theatres')
+    ->where('name','LIKE','%'.$request->query('name','').'%')->get();
    //  dd($movies);
     return view( 'admin.movies.index', [ 'movies' => $movies ]);
    } 

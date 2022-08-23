@@ -8,9 +8,10 @@ use App\Models\Location;
 
 class TheatresController 
 {
-    public function index()
+    public function index(Request $request)
     {
-        $theatres = Theatre::with('location')->get();
+        $theatres = Theatre::with('location')
+        ->where('name','LIKE', '%'. $request->query('name', ''). '%')->get();
         // dd($theatres);
         return view ('admin.theatres.index', ['theatres' => $theatres]);
     }

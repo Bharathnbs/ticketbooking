@@ -21,7 +21,7 @@ class AuthController
             'password' =>  'required'
         ]);
 
-            dd(Auth::guard('users')->attempt($validated));
+            dd(Auth::guard('web')->attempt($validated));
 
         if(Auth::attempt($validated))
         {
