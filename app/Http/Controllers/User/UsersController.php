@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-
 class UsersController
 {
     public function create()
@@ -22,8 +21,9 @@ class UsersController
         ]);
 
         $user = new User($validated);
-        // $user->password = md5(substr($validated['password'],0,12));
+        $user->password = bcrypt($validated['password']);
         $user->save();
+
         return redirect()->route('user.dashboard.index');
     }
 }

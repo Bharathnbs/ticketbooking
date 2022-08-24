@@ -1,0 +1,10 @@
+.card,a{
+    margin-left: 100px;
+    margin-top :60px;
+    text-decoration: none;
+    font-weight: bolder;
+    color: white;
+}
+.card{
+    background-color: red;
+}

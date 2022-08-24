@@ -15,19 +15,13 @@ class AuthController
 
     public function authenticate(Request $request )
     {
-
         $validated = $request->validate([
             'email' => 'required|email', 
             'password' =>  'required'
         ]);
 
-            dd(Auth::guard('web')->attempt($validated));
-
-        if(Auth::attempt($validated))
-        {
-    
+        if(Auth::attempt($validated)) {    
             $request->session()->regenerate();
-
             return redirect()->route('user.users.create');
         }
         

@@ -23,4 +23,9 @@ class Movie extends Model
     {
         return $this->belongsTo(Theatre::class, 'theatre_id');
     }
+  
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

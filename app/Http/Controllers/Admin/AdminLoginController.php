@@ -19,19 +19,13 @@ class AdminLoginController
             'email' => 'required|email', 
             'password' =>  'required'
         ]);
-        // dd(Auth::guard('admin')->attempt($validated));
 
-        if(Auth::guard('admin')->attempt($validated))
-        {
-            
+        if(Auth::guard('admin')->attempt($validated)) {
             $request->session()->regenerate();
-
-            return redirect()->route('admin.location.index');
+            return redirect()->route('admin.dashboard');
         }
         
-        return back()->withErrors([
-            $errMessage = 'please check email and password'
-        ]);
+        return back()->withErrors(['please check email and password']);
     }
 
     public function logout()
@@ -40,6 +34,5 @@ class AdminLoginController
         session()->invalidate();
         session()->regenerateToken();
         return redirect()->route('admin.login');
-        
     }
 }

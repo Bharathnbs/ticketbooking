@@ -11,8 +11,9 @@ class TheatresController
     public function index(Request $request)
     {
         $theatres = Theatre::with('location')
-        ->where('name','LIKE', '%'. $request->query('name', ''). '%')->get();
-        // dd($theatres);
+                        ->where('name','LIKE', '%'. $request->query('name', ''). '%')
+                        ->get();
+
         return view ('admin.theatres.index', ['theatres' => $theatres]);
     }
     public function create()
