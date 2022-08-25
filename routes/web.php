@@ -21,17 +21,23 @@ Route::name('user.')->group(function (){
 					Route::post('/', 'authenticate')->name('.post');
 	});
 
-	Route::controller(UsersController::class)->prefix('users')->name('users.')->group(function (){
-					Route::get('/create', 'create')->name('create');
-					Route::post('/create', 'store')->name('store');
+	Route::middleware('auth:web')->group(function(){
+		Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+		Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+			Route::controller(UsersController::class)->prefix('users')->name('users.')->group(function (){
+				Route::get('/create', 'create')->name('create');
+				Route::post('/create', 'store')->name('store');
+			});
+
+
+			Route::controller(UserBookingsController::class)->prefix('bookings')->name('bookings.')->group(function(){
+			Route::get('/{id}/create', 'create')->name('create');
+			Route::post('/{id}/create', 'store')->name('store');
+			});
 	});
 
-	Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-	// Route::controller(UserBookingsController::class)->prefix('bookings')->name('bookings.')->group(function(){
-	//         Route::get('/{id}/create', 'create')->name('create');
-	//         Route::post('/{id}/create', 'store')->name('store');
-	// });
 });
 
 
@@ -92,8 +98,6 @@ Route::prefix('admin')->name('admin.')->group(function() {
 						Route::get('/', 'index')->name('index');
 						Route::get('/create', 'create')->name('create');
 						Route::post('/create', 'store')->name('store');
-						Route::get('/{id}/update', 'edit')->name('edit');
-						Route::post('/{id}/update', 'update')->name('update');
 						Route::get('/{id}/delete', 'delete')->name('delete');
 		});
 	});

@@ -14,7 +14,7 @@
         <table>
             <tr>
                 @foreach($movies as $movie)
-                    <td style="text-align:center;"> <img src="/images/{{$movie->images}}" style="width:100px;" ><br><a href="#">{{$movie->name}}</a> <h4>{{$movie->genres}}<h4> <h6>{{$movie->time}}</h6></td>
+                    <td style="text-align:center;"> <img src="/images/{{$movie->images}}" style="width:100px;" ><br><a href="{{route('user.bookings.create',$movie->id)}}">{{$movie->name}}</a> <h4>{{$movie->genres}}<h4> <h6>{{$movie->time}}</h6></td>
                 @endforeach
             </tr>
         </table><hr>
@@ -26,5 +26,7 @@
                 @endforeach    
             </tr>
         </table>
+        <a href="{{route('user.logout')}}">logout</a>
+        <a href="{{route('user.users.create')}}">Register</a>
     </body>
 </html>

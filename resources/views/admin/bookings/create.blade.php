@@ -28,15 +28,13 @@
         <select name="theatre_id" id="theatre_id" onchange="theatreUpdated()"></select><br>
 
         <label >movie name</label><br>
-        <select name="movie_id" id="movie_id"></select><br> 
+        <select name="movie_id" id="movie_id" onchange="priceUpdated()"></select><br> 
 
         <label >quantity</label><br>
-        <input id="quantity" type="number" onchange="updateTotal()" name="quantity"><br>
+        <input id="quantity" type="number" onchange="priceUpdated()" name="quantity" value=1><br>
 
         <label >price</label><br>
-        @foreach($movies as $movie)
-            <input id="price" type="text" name="price" value="{{$movie->price}}"><br>
-        @endforeach
+            <input id="price" type="text" name="price"><br>
         <label > total price</label><br>
         <input type="text" name="total_price" id="total"><br>
         <input type="submit" value="booking">
@@ -48,12 +46,6 @@
     var movies = @json($movies);
     var theatres = @json($theatres);
 
-    function updateTotal() {
-        var quantity = document.getElementById('quantity').value ;
-        // console.log(quantity);
-        var price = document.getElementById('price').value ;
-        document.getElementById('total').value = price * quantity;
-    }
 
     function locationUpdated(){
         var selectedLocation = document.getElementById('location_id').value;
@@ -80,16 +72,29 @@
 
     function theatreUpdated(){
         var selectedTheatre = document.getElementById('theatre_id').value;
-        console.log(selectedTheatre);
         document.getElementById('movie_id').innerHTML ='';
 
         movies 
-        .filter(m => m.theatre_id == selectedTheatre)
-        .map(m => {
-            console.log(m);
-            document.getElementById('movie_id').innerHTML += '<option value="'+ m.id +'">'+  m.name +'</option>';
-        })
+            .filter(m => m.theatre_id == selectedTheatre)
+            .map(m => {
+                document.getElementById('movie_id').innerHTML += '<option value="'+ m.id +'">'+  m.name +'</option>';
+            });
 
+        priceUpdated();
+    }
+
+    function priceUpdated()
+    {
+        var selectMovie = document.getElementById('movie_id').value;
+        for(i =0 ; i< movies.length; i++){
+            if(selectMovie == movies[i].id)
+            {
+                var price = document.getElementById('price').value = movies[i].price;
+                var quantity = document.getElementById('quantity').value;
+                document.getElementById('total').value =price * quantity;
+            }
+        }
+        
     }
 
     window.addEventListener('load', function() {

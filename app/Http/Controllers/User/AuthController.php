@@ -20,14 +20,12 @@ class AuthController
             'password' =>  'required'
         ]);
 
-        if(Auth::attempt($validated)) {    
+        if(Auth::guard('web')->attempt($validated)) {    
             $request->session()->regenerate();
-            return redirect()->route('user.users.create');
+            return redirect()->route('user.dashboard');
         }
         
-        return back()->withErrors([
-            $errMessage = 'please check email and password'
-        ]);
+        return back()->withErrors([ 'please check email and password' ]);
     }
 
     public function logout()
@@ -35,7 +33,7 @@ class AuthController
         Auth::logout();
         session()->invalidate();
         session()->regenerateToken();
-        return redirect()->route('login');
+        return redirect()->route('user.login');
         
     }
 }

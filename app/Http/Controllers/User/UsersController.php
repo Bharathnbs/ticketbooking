@@ -24,7 +24,7 @@ class UsersController
         $user->password = bcrypt($validated['password']);
         $user->save();
 
-        return redirect()->route('user.dashboard.index');
+        return redirect()->route('user.dashboards.index');
     }
 }
 

@@ -14,6 +14,8 @@ class BookingsController
 {
    public function index()
    {
+      $bookings =Booking::with('user')->get();
+   //   dd($bookings);
       return view('admin.bookings.index',['bookings' => Booking::with(['user', 'theatre', 'movie'])->get()]);
    }
 
@@ -35,11 +37,13 @@ class BookingsController
          'quantity' => 'required',
          'total_price' => 'required'
      ]);
-      // dd($validated);
      $booking = new Booking($validated);
-     $booking->total_price =$validated['total_price'];
      $booking->save();
-
    } 
+   public function delete(Request $request,$id)
+   {
+      $booking = Booking::find($id);
+      $booking->delete(); 
+   }
 }
 

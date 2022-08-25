@@ -19,13 +19,13 @@ class Movie extends Model
         return $this->hasMany(Booking::class);
     }
 
-    public function theatres()
+    public function theatre()
     {
         return $this->belongsTo(Theatre::class, 'theatre_id');
     }
   
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'id');
     }
 }
