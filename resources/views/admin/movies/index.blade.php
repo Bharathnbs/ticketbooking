@@ -30,7 +30,7 @@
             <tbody>
                 @foreach($movies as $movie)
                 <tr>
-                    <td>{{ $movie->theatres->name }}</td>
+                    <td>{{ $movie->theatre->name }}</td>
                     <td>{{ $movie->name }}</td>
                     <td>{{ $movie->genres }}</td>
                     <td>{{ $movie->time }}</td>

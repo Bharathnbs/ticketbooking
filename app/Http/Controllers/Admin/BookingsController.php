@@ -12,8 +12,9 @@ use App\Models\Booking;
 
 class BookingsController
 {
-   public function index()
+   public function index(Request $request)
    {
+      $user =User::where('name', 'LIKE', '%'.$request->query('name', '').'%')->get();
       $bookings =Booking::with('user')->get();
    //   dd($bookings);
       return view('admin.bookings.index',['bookings' => Booking::with(['user', 'theatre', 'movie'])->get()]);

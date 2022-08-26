@@ -10,7 +10,7 @@ class MoviesController
 {
    public function index(Request $request)
    {
-    $movies = Movie::with('theatres')
+    $movies = Movie::with('theatre')
     ->where('name','LIKE','%'.$request->query('name','').'%')->get();
    //  dd($movies);
     return view( 'admin.movies.index', [ 'movies' => $movies ]);

@@ -7,26 +7,40 @@
         <title>user dashboard</title>
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{asset('css/user/dashboard/header.css')}}">
     </head>
-    <body style="background-color:#0000">
-        <h1>wellcome to cinimas</h1>
-        <h2>All movies</h2><br>
-        <table>
-            <tr>
-                @foreach($movies as $movie)
-                    <td style="text-align:center;"> <img src="/images/{{$movie->images}}" style="width:100px;" ><br><a href="{{route('user.bookings.create',$movie->id)}}">{{$movie->name}}</a> <h4>{{$movie->genres}}<h4> <h6>{{$movie->time}}</h6></td>
-                @endforeach
-            </tr>
-        </table><hr>
-        <h2>Action And Drama</h2>
-        <table>
-            <tr>
-                @foreach($genres as $genre)
-                    <td> <img src="/images/{{$genre->images}}" style="width:100px;" ><br> <a href="#">{{$movie->name}}</a> <h4>{{$genre->genres}}<h4> <h6>{{$movie->time}}</h6></td>
-                @endforeach    
-            </tr>
-        </table>
-        <a href="{{route('user.logout')}}">logout</a>
-        <a href="{{route('user.users.create')}}">Register</a>
+    <body>
+        <div class="header">
+            <h1>TENTUKOTTAI</h1>
+            <img src="/images/icon.png" class="image">
+            <div class="search">
+                <form action="{{route('user.dashboard')}}" method="get" class="form">
+                    <input type="search" name="name" class="form-control" >
+                    <input type="submit" value="search" class="btn">
+                </form>
+            </div> 
+                <a href="{{route('user.logout')}}" class="btn" id="logout">logout</a>
+                <a href="{{route('user.users.create')}}" class="btn" id="register">Register</a> 
+        </div>
+
+        <h3 class="title1">All movies</h3><br>
+        <div class="all_movies">
+            @foreach($movies as $movie)
+                <div class="movie">
+                    <div class="content" style="text-align:center;"> <img src="/images/{{$movie->images}}" style="width:200px;" class="images"><br><a href="{{route('user.bookings.create',$movie->id)}}" class="movie_title">{{$movie->name}}</a> <h6>{{$movie->genres}}</h6> <h6>{{$movie->time}}</h6></div>
+                </div>
+            @endforeach
+        </div>
+
+        <h3 class="title2">Action And Drama</h3>
+        <div class="genres">
+            @foreach($genres as $genre)
+                <div class="genre">
+                    <div class="content1"> <img src="/images/{{$genre->images}}" class="images" ><br> <a href="{{route('user.bookings.create',$movie->id)}}" class="movie_title1">{{$movie->name}}</a> <h6 class="ti">{{$genre->genres}}<h6> <h6 class="ti1">{{$movie->time}}</h6></div>
+                </div>
+            @endforeach    
+        </div>
+        <!-- <a href="{{route('user.logout')}}">logout</a>
+        <a href="{{route('user.users.create')}}">Register</a> -->
     </body>
 </html>

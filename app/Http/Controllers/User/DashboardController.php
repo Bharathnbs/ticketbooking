@@ -9,10 +9,10 @@ use App\Models\User;
 
 class DashboardController 
 {
-    public function index()
+    public function index(Request $request)
     {
         $user =User::get();
-        $movies = Movie::get();
+        $movies = Movie::where('name', 'LIKE','%'.$request->query('name', '').'%')->get();
         $genres = Movie::select('genres','images')->where('genres','=','action and drama')->get();
         return view('user.dashboards.index', ['movies' => $movies, 'genres' =>  $genres]);    
     }
