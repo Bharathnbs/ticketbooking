@@ -27,7 +27,7 @@ Route::name('user.')->group(function (){
 
 			Route::controller(UsersController::class)->prefix('users')->name('users.')->group(function (){
 				Route::get('/create', 'create')->name('create');
-				Route::post('/create', 'store')->name('store');
+				// Route::post('/create', 'store')->name('store');
 			});
 
 
