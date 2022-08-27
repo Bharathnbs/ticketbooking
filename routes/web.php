@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\BookingsController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Livewire\CreateUser;
 
 Route::name('user.')->group(function (){
 
@@ -25,11 +26,11 @@ Route::name('user.')->group(function (){
 		Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 		Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
+
 			Route::controller(UsersController::class)->prefix('users')->name('users.')->group(function (){
 				Route::get('/create', 'create')->name('create');
 				// Route::post('/create', 'store')->name('store');
 			});
-
 
 			Route::controller(UserBookingsController::class)->prefix('bookings')->name('bookings.')->group(function(){
 			Route::get('/{id}/create', 'create')->name('create');
