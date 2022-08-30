@@ -5,7 +5,6 @@ use Illuminate\Http\Request;
 use App\Models\User;
 
 
-
 class UsersController 
 {
     public function create()

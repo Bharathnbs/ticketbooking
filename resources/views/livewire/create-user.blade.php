@@ -24,5 +24,5 @@
     <label >Phone Number</label><br>
     <input type="text"  wire:model="phone" class="form-control" ><br>
     <input type="submit" wire:click="store" class="btn btn-primary" style="margin-left:170px;">
-
+    <a href="{{route('user.dashboard')}}">Home</a>
     </div>

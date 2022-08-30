@@ -20,7 +20,7 @@
                 </form>
             </div> 
                 <a href="{{route('user.logout')}}" class="btn" id="logout">logout</a>
-                <a href="{{route('user.users.create')}}" class="btn" id="register">Register</a> 
+                <a href="{{route('user.create')}}" class="btn" id="register">Register</a> 
         </div>
 
         <h3 class="title1">All movies</h3><br>
@@ -40,7 +40,6 @@
                 </div>
             @endforeach    
         </div>
-        <!-- <a href="{{route('user.logout')}}">logout</a>
-        <a href="{{route('user.users.create')}}">Register</a> -->
+
     </body>
 </html>

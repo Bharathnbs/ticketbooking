@@ -14,6 +14,7 @@ class DashboardController
         $user =User::get();
         $movies = Movie::where('name', 'LIKE','%'.$request->query('name', '').'%')->get();
         $genres = Movie::select('genres','images')->where('genres','=','action and drama')->get();
+        dd($genres);
         return view('user.dashboards.index', ['movies' => $movies, 'genres' =>  $genres]);    
     }
 }
