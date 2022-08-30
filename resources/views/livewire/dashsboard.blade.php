@@ -18,7 +18,7 @@
             @foreach($movies as $movie)
                 <div class="movie">
                     <div class="content" style="text-align:center;"> <img src="/images/{{$movie->images}}" style="width:200px;" class="images"><br>
-                    <a href="{{route('user.bookings.create',$movie->id)}}" class="movie_title">{{$movie->name}}</a> <h6>{{$movie->genres}}</h6> <h6>{{$movie->time}}</h6></div>
+                    <a href="{{route('user.bookingcreate',$movie->id)}}" class="movie_title">{{$movie->name}}</a> <h6>{{$movie->genres}}</h6> <h6>{{$movie->time}}</h6></div>
                 </div>
             @endforeach
         </div>
@@ -27,7 +27,7 @@
         <div class="genres">
             @foreach($genres as $genre)
                 <div class="genre">
-                    <div class="content1"> <img src="/images/{{$genre->images}}" class="images" ><br> <a href="{{route('user.bookings.create',$movie->id)}}" class="movie_title1">{{$genre->name}}</a>
+                    <div class="content1"> <img src="/images/{{$genre->images}}" class="images" ><br> <a href="{{route('user.bookingcreate',$movie->id)}}" class="movie_title1">{{$genre->name}}</a>
                      <h6 class="ti">{{$genre->genres}}<h6> <h6 class="ti1">{{$movie->time}}</h6></div>
                 </div>
             @endforeach    

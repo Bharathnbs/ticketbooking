@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Livewire\CreateUser;
 use App\Http\Livewire\Dashsboard;
+use App\Http\Livewire\UserBooking;
 
 Route::name('user.')->group(function (){
 
@@ -36,10 +37,11 @@ Route::name('user.')->group(function (){
 			Route::get('/create', CreateUser::class)->name('create');
 
 
-			Route::controller(UserBookingsController::class)->prefix('bookings')->name('bookings.')->group(function(){
-			Route::get('/{id}/create', 'create')->name('create');
-			Route::post('/{id}/create', 'store')->name('store');
-		});
+		// 	Route::controller(UserBookingsController::class)->prefix('bookings')->name('bookings.')->group(function(){
+		// 	Route::get('/{id}/create', 'create')->name('create');
+		// 	Route::post('/{id}/create', 'store')->name('store');
+		// });
+		Route::get('/{id}/bookingcreate', UserBooking::class)->name('bookingcreate');
 	});
 
 

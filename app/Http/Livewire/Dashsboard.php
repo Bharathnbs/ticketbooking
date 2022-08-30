@@ -23,10 +23,7 @@ class Dashsboard extends Component
     public function search()    
     {
         $this->movies = Movie::where('name','LIKE','%'.$this->name.'%')->get();
-        $this->genres = Movie::select('name','genres', 'images')->where('genres','=','action and drama')->get();
-
-    
-         
+        $this->genres = Movie::select('name','genres', 'images')->where('genres','=','action and drama')->get();       
     }
 
     public function render()
