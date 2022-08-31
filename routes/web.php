@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\UsersController;
-use App\Http\Controllers\User\DashboardController;
+// use App\Http\Controllers\User\UsersController;
+// use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\AuthController;
-use App\Http\Controllers\User\UserBookingsController;
+// use App\Http\Controllers\User\UserBookingsController;
 use App\Http\Controllers\Admin\AdminsController;
 use App\Http\Controllers\Admin\LocationsController;
 use App\Http\Controllers\Admin\TheatresController;
@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Livewire\CreateUser;
 use App\Http\Livewire\Dashsboard;
 use App\Http\Livewire\UserBooking;
+use App\Http\Livewire\admin\admindashboard;
 
 Route::name('user.')->group(function (){
 
@@ -27,7 +28,7 @@ Route::name('user.')->group(function (){
 	Route::middleware('auth:web')->group(function(){
 		// Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 		Route::get('/', Dashsboard::class)->name('dashboard');
-		Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+		// Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 			// Route::controller(UsersController::class)->prefix('users')->name('users.')->group(function (){
@@ -56,7 +57,7 @@ Route::prefix('admin')->name('admin.')->group(function() {
 	});
 
 	Route::middleware('auth:admin')->group(function() {
-		Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
+		Route::get('/', admindashboard::class)->name('dashboard');
 		Route::get('/logout', [AdminLoginController::class, 'logout'])->name('logout');
 
 		Route::controller(CustomersController::class)->prefix('users')->name('users.')->group(function (){
