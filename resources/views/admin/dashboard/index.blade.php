@@ -11,7 +11,7 @@
     </head>
     <body>
         <div class="card" style="width:20%; height:150px;margin-bottom:20px; margin-left:50px; margin-top:20px;">
-            <a href="{{route('admin.locations.index')}}">location page</a><br>
+            <a href="{{route('admin.location_index')}}">location page</a><br>
         </div>  
         <div class="card" style="width:20%; height:150px;margin-bottom:20px; margin-left:50px;">
             <a href="{{route('admin.theatres.index')}}">theatre page</a><br>

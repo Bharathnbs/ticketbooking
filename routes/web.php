@@ -16,7 +16,17 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Livewire\CreateUser;
 use App\Http\Livewire\Dashsboard;
 use App\Http\Livewire\UserBooking;
-use App\Http\Livewire\admin\admindashboard;
+use App\Http\Livewire\Admin\admindashboard;
+use App\Http\Livewire\Admin\Locations\Create;
+use App\Http\Livewire\Admin\Locations\index;
+use App\Http\Livewire\Admin\Locations\update;
+use App\Http\Livewire\Admin\Users\UserCreate;
+use App\Http\Livewire\Admin\Users\UserIndex;
+use App\Http\Livewire\Admin\Users\UserUpdate;
+use App\Http\Livewire\Admin\Theatres\TheatreIndex;
+use App\Http\Livewire\Admin\Theatres\TheatreCreate;
+use App\Http\Livewire\Admin\Theatres\TheatreUpdate;
+
 
 Route::name('user.')->group(function (){
 
@@ -60,38 +70,48 @@ Route::prefix('admin')->name('admin.')->group(function() {
 		Route::get('/', admindashboard::class)->name('dashboard');
 		Route::get('/logout', [AdminLoginController::class, 'logout'])->name('logout');
 
-		Route::controller(CustomersController::class)->prefix('users')->name('users.')->group(function (){
-						Route::get('/', 'index')->name('index');
-						Route::get('/create', 'create')->name('create');
-						Route::post('/create', 'store')->name('store');
-						Route::get('/{id}/update', 'edit')->name('edit');
-						Route::post('/{id}/update', 'update')->name('update');
-						Route::get('/{id}/delete', 'delete')->name('delete');
-		});
+		// Route::controller(CustomersController::class)->prefix('users')->name('users.')->group(function (){
+		// 				Route::get('/', 'index')->name('index');
+		// 				Route::get('/create', 'create')->name('create');
+		// 				Route::post('/create', 'store')->name('store');
+		// 				Route::get('/{id}/update', 'edit')->name('edit');
+		// 				Route::post('/{id}/update', 'update')->name('update');
+		// 				Route::get('/{id}/delete', 'delete')->name('delete');
+		// });
+		Route::get('/users', UserIndex::class)->name('user_index');
+		Route::get('/users/create', UserCreate::class)->name('user_create');
+		Route::get('/user/{id}/update', UserUpdate::class)->name('user_update');
 		
-		Route::controller(AdminsController::class)->prefix('admins')->name('admins.')->group(function (){
-						Route::get('/', 'index')->name('index');
-						// Route::get('/create', 'create')->name('create');
-						// Route::post('/create', 'store')->name('store');
-		});
+		// Route::controller(AdminsController::class)->prefix('admins')->name('admins.')->group(function (){
+		// 				Route::get('/', 'index')->name('index');
+		// 				// Route::get('/create', 'create')->name('create');
+		// 				// Route::post('/create', 'store')->name('store');
+		// });
 		
-		Route::controller(LocationsController::class)->prefix('locations')->name('locations.')->group(function (){
-						Route::get('/', 'index')->name('index');
-						Route::get('/create', 'create')->name('create');
-						Route::post('/create', 'store')->name('store');
-						Route::get('/{id}/update', 'edit')->name('edit');
-						Route::post('/{id}/update', 'update')->name('update');
-						Route::get('/{id}/delete', 'delete')->name('delete');
-		});
+		// Route::controller(LocationsController::class)->prefix('locations')->name('locations.')->group(function (){
+		// 				Route::get('/', 'index')->name('index');
+		// 				Route::get('/create', 'create')->name('create');
+		// 				Route::post('/create', 'store')->name('store');
+		// 				Route::get('/{id}/update', 'edit')->name('edit');
+		// 				Route::post('/{id}/update', 'update')->name('update');
+		// 				Route::get('/{id}/delete', 'delete')->name('delete');
+		// });
+		Route::get('/locations', index::class)->name('location_index');
+		Route::get('/locations/create', Create::class)->name('location_create');
+		Route::get('/locations/{id}/update', update::class)->name('location_update');
 
-		Route::controller(TheatresController::class)->prefix('theatres')->name('theatres.')->group(function (){
-						Route::get('/', 'index')->name('index');
-						Route::get('/create', 'create')->name('create');
-						Route::post('/create', 'store')->name('store');
-						Route::get('/{id}/update', 'edit')->name('edit');
-						Route::post('/{id}/update', 'update')->name('update');
-						Route::get('/{id}/delete', 'delete')->name('delete');
-		});
+		// Route::controller(TheatresController::class)->prefix('theatres')->name('theatres.')->group(function (){
+		// 				Route::get('/', 'index')->name('index');
+		// 				Route::get('/create', 'create')->name('create');
+		// 				Route::post('/create', 'store')->name('store');
+		// 				Route::get('/{id}/update', 'edit')->name('edit');
+		// 				Route::post('/{id}/update', 'update')->name('update');
+		// 				Route::get('/{id}/delete', 'delete')->name('delete');
+		// // });
+		Route::get('/theatres', TheatreIndex::class)->name('theatre_index');
+		Route::get('/theatres/create', TheatreCreate::class)->name('theatre_create');
+		Route::get('/theatres/{id}/update', TheatreUpdate::class)->name('theatre_update');
+
 
 		Route::controller(MoviesController::class)->prefix('movies')->name('movies.')->group(function (){
 						Route::get('/', 'index')->name('index');

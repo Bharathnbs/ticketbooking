@@ -14,7 +14,7 @@
             <td>{{$user->email}}</td>
             <td>{{$user->password}}</td>
             <td>{{$user->phone}}</td>
-            <td><a href="{{route('admin.users.update', $user->id)}}">edit</a> <a href="{{route('admin.users.delete', $user->id)}}">delete</a></td>
+            <td><a href="{{route('admin.users_update', $user->id)}}">edit</a> <a href="{{route('admin.users.delete', $user->id)}}">delete</a></td>
         </tr>
         @endforeach
         <a href="{{route('admin.users.create')}}">users create</a>
