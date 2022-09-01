@@ -6,13 +6,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\AuthController;
 // use App\Http\Controllers\User\UserBookingsController;
 use App\Http\Controllers\Admin\AdminsController;
-use App\Http\Controllers\Admin\LocationsController;
-use App\Http\Controllers\Admin\TheatresController;
+// use App\Http\Controllers\Admin\LocationsController;
+// use App\Http\Controllers\Admin\TheatresController;
 use App\Http\Controllers\Admin\MoviesController;
 use App\Http\Controllers\Admin\BookingsController;
 use App\Http\Controllers\Admin\AdminLoginController;
-use App\Http\Controllers\Admin\CustomersController;
-use App\Http\Controllers\Admin\AdminDashboardController;
+// use App\Http\Controllers\Admin\CustomersController;
+// use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Livewire\CreateUser;
 use App\Http\Livewire\Dashsboard;
 use App\Http\Livewire\UserBooking;
@@ -26,6 +26,9 @@ use App\Http\Livewire\Admin\Users\UserUpdate;
 use App\Http\Livewire\Admin\Theatres\TheatreIndex;
 use App\Http\Livewire\Admin\Theatres\TheatreCreate;
 use App\Http\Livewire\Admin\Theatres\TheatreUpdate;
+use App\Http\Livewire\Admin\Movies\MovieIndex;
+use App\Http\Livewire\Admin\Movies\MovieCreate;
+use App\Http\Livewire\Admin\Movies\MovieUpdate;
 
 
 Route::name('user.')->group(function (){
@@ -113,14 +116,17 @@ Route::prefix('admin')->name('admin.')->group(function() {
 		Route::get('/theatres/{id}/update', TheatreUpdate::class)->name('theatre_update');
 
 
-		Route::controller(MoviesController::class)->prefix('movies')->name('movies.')->group(function (){
-						Route::get('/', 'index')->name('index');
-						Route::get('/create', 'create')->name('create');
-						Route::post('/create', 'store')->name('store');
-						Route::get('/{id}/update', 'edit')->name('edit');
-						Route::post('/{id}/update', 'update')->name('update');
-						Route::get('/{id}/delete', 'delete')->name('delete');
-		});
+		// Route::controller(MoviesController::class)->prefix('movies')->name('movies.')->group(function (){
+		// 				Route::get('/', 'index')->name('index');
+		// 				Route::get('/create', 'create')->name('create');
+		// 				Route::post('/create', 'store')->name('store');
+		// 				Route::get('/{id}/update', 'edit')->name('edit');
+		// 				Route::post('/{id}/update', 'update')->name('update');
+		// 				Route::get('/{id}/delete', 'delete')->name('delete');
+		// });
+		Route::get('/movies', TheatreIndex::class)->name('movie_index');
+		Route::get('/movies/create', TheatreCreate::class)->name('movie_create');
+		Route::get('/movies/{id}/update', TheatreUpdate::class)->name('movie_update');
 
 		Route::controller(BookingsController::class)->prefix('bookings')->name('bookings.')->group(function (){
 						Route::get('/', 'index')->name('index');

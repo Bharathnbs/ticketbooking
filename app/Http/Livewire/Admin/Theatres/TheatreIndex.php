@@ -14,7 +14,15 @@ class TheatreIndex extends Component
     public function mount() 
     {
         $this->theatres = Theatre::with('location')->get();
-        dd($this->theatres);
+    }
+
+    public function deleteTeatre($id)
+    {
+        $theatre = Theatre::find($id);
+        $theatre->delete();
+
+        $this->theatres = Theatre::get();
+        return redirect()->route('admin.theatre_index');
     }
 
     public function render()

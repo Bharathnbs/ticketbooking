@@ -12,14 +12,18 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($theatres as $theatre)
+                @forelse($theatres as $theatre)
                 <tr>
                     <td>#{{ $theatre->id }}</td>
-                    <td>{{ $theatre->location->name }}</td>
+                    <td>{{ optional($theatre->location)->name }}</td>
                     <td>{{ $theatre->name }}</td>
                     <td>{{ $theatre->area }}</td>
+                    <td><a href="{{route('admin.theatre_update',$theatre->id)}}">edit</a> <button wire:click="deleteTheatre({{ $theatre->id }})">delete</button></td>
                 </tr>
-                @endforeach
+                @empty
+                    <p>unavalable theatre</p>
+
+                @endforelse
                 
             </tbody>
         </table>    

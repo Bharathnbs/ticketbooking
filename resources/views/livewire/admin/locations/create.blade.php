@@ -1,6 +1,6 @@
 <div>
     <div class="card" style="width:30%; margin-left:500px; margin-top:150px;">
-        <div class="card-header" style="background-color:red; color:white;"><h2 style="margin-left:100px;">Location Create</h2></div>
+        <div class="card-header" style="background-color:#A66CFF; color:white;"><h2 style="margin-left:100px;">Location Create</h2></div>
         <div class="card-body">
             @if ($errors->any())
                 <div>
