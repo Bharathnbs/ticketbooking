@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Theatres;
 
 use Livewire\Component;
 use App\Models\Location;
+use App\Models\Theatre;
 
 
 class TheatreCreate extends Component
@@ -29,6 +30,8 @@ class TheatreCreate extends Component
             'name' => $this->name,
             'area' => $this->area,
         ]);
+
+        return redirect()->route('admin.theatre_index');
     }
     public function render()
     {

@@ -16,7 +16,7 @@ class TheatreIndex extends Component
         $this->theatres = Theatre::with('location')->get();
     }
 
-    public function deleteTeatre($id)
+    public function deleteTheatre($id)
     {
         $theatre = Theatre::find($id);
         $theatre->delete();

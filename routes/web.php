@@ -124,9 +124,9 @@ Route::prefix('admin')->name('admin.')->group(function() {
 		// 				Route::post('/{id}/update', 'update')->name('update');
 		// 				Route::get('/{id}/delete', 'delete')->name('delete');
 		// });
-		Route::get('/movies', TheatreIndex::class)->name('movie_index');
-		Route::get('/movies/create', TheatreCreate::class)->name('movie_create');
-		Route::get('/movies/{id}/update', TheatreUpdate::class)->name('movie_update');
+		Route::get('/movies', MovieIndex::class)->name('movie_index');
+		Route::get('/movies/create', MovieCreate::class)->name('movie_create');
+		Route::get('/movies/{id}/update', MovieUpdate::class)->name('movie_update');
 
 		Route::controller(BookingsController::class)->prefix('bookings')->name('bookings.')->group(function (){
 						Route::get('/', 'index')->name('index');
