@@ -8,7 +8,7 @@ use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\Admin\AdminsController;
 // use App\Http\Controllers\Admin\LocationsController;
 // use App\Http\Controllers\Admin\TheatresController;
-use App\Http\Controllers\Admin\MoviesController;
+// use App\Http\Controllers\Admin\MoviesController;
 use App\Http\Controllers\Admin\BookingsController;
 use App\Http\Controllers\Admin\AdminLoginController;
 // use App\Http\Controllers\Admin\CustomersController;
@@ -29,6 +29,9 @@ use App\Http\Livewire\Admin\Theatres\TheatreUpdate;
 use App\Http\Livewire\Admin\Movies\MovieIndex;
 use App\Http\Livewire\Admin\Movies\MovieCreate;
 use App\Http\Livewire\Admin\Movies\MovieUpdate;
+use App\Http\Livewire\Admin\Bookings\BookingIndex;
+use App\Http\Livewire\Admin\Bookings\BookingCreate;
+
 
 
 Route::name('user.')->group(function (){
@@ -128,12 +131,14 @@ Route::prefix('admin')->name('admin.')->group(function() {
 		Route::get('/movies/create', MovieCreate::class)->name('movie_create');
 		Route::get('/movies/{id}/update', MovieUpdate::class)->name('movie_update');
 
-		Route::controller(BookingsController::class)->prefix('bookings')->name('bookings.')->group(function (){
-						Route::get('/', 'index')->name('index');
-						Route::get('/create', 'create')->name('create');
-						Route::post('/create', 'store')->name('store');
-						Route::get('/{id}/delete', 'delete')->name('delete');
-		});
+		// Route::controller(BookingsController::class)->prefix('bookings')->name('bookings.')->group(function (){
+		// 				Route::get('/', 'index')->name('index');
+		// 				Route::get('/create', 'create')->name('create');
+		// 				Route::post('/create', 'store')->name('store');
+		// 				Route::get('/{id}/delete', 'delete')->name('delete');
+		// });
+		Route::get('/bookings', BookingIndex::class)->name('booking_index');
+		Route::get('/bookings/create', BookingCreate::class)->name('booking_create');
 	});
 
 });

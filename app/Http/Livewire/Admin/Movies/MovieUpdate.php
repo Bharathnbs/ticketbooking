@@ -32,7 +32,7 @@ class MovieUpdate extends Component
         $this->date = $this->movie->date;
         $this->price = $this->movie->price;
         // dd($this->movie->images);
-        // $this->images = $this->movie->images;
+        $this->images = $this->movie->images(public_path());
 
     }
 
@@ -58,6 +58,6 @@ class MovieUpdate extends Component
     public function render()
     {
         return view('livewire.admin.movies.movie-update')
-        ->layout('layouts.admin.movies.update');
+                ->layout('layouts.admin.movies.update');
     }
 }
