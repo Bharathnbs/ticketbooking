@@ -30,6 +30,9 @@ class MovieCreate extends Component
     public function store()
     {
         $validated = $this->validate();
+        $file = $this->images->store('images', 'public');
+        
+        // dd($file);
 
         movie::create([
              'theatre_id' => $this->theatre_id,
@@ -38,7 +41,7 @@ class MovieCreate extends Component
             'time' => $this->time,
             'date' => $this->date,
             'price' => $this->price,
-            'images' => $this->images->store('images', 'public'),
+            'images' => $file,
         ]);
 
     }

@@ -39,6 +39,8 @@ class MovieUpdate extends Component
     public function update()
     {
         $validated = $this->validate();
+        $file = $this->images->store('images', 'public');
+
     
             $this->movie->theatre_id = $this->theatre_id;
             $this->movie->name = $this->name;
@@ -46,8 +48,11 @@ class MovieUpdate extends Component
             $this->movie->time = $this->time;
             $this->movie->date = $this->date;
             $this->movie->price = $this->price;
-            $this->movie->images = $this->images->store('images', 'public');
+            $this->movie->images = $file;
+            // dd($this->movie->images);
             $this->movie->save();
+
+            return redirect()->route('admin.movie_index');
 
     }
     public function render()
