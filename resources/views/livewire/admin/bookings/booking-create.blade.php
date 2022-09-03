@@ -49,7 +49,7 @@
                 <input type="text" wire:model="price"  class="form-control"><br>
             <label > total price</label><br>
             <input type="text" wire:model="total_price" id="total" class="form-control"><br>
-            <input type="submit" wire:click="booking" class="btn btn-primary">
+            <input type="submit" wire:click="booking" class="btn btn-primary" style="margin-left:170px;">
 
             <!-- <script>
                 var locations = @json($locations);
