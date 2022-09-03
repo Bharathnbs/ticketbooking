@@ -25,7 +25,7 @@ h1:hover{
     margin-left: 20px;
 }
 .movie{
-  width:20%;
+  width:50%;
   background-color:#A66CFF;
   height: 300px;
   margin-left: 40px;
@@ -34,6 +34,7 @@ h1:hover{
 }
 .all_movies{
     display: flex;
+    width: 100%;
     margin-bottom: 50px;
 }
 .content{

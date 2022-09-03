@@ -44,7 +44,7 @@ Route::name('user.')->group(function (){
 	Route::middleware('auth:web')->group(function(){
 		// Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 		Route::get('/', Dashsboard::class)->name('dashboard');
-		// Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+		Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 			// Route::controller(UsersController::class)->prefix('users')->name('users.')->group(function (){

@@ -13,7 +13,7 @@
                 <a href="{{route('admin.movie_index')}}">movies page</a><br>
             </div>
             <div class="card" style="width:20%; height:250px;margin-bottom:20px; margin-left:50px;">
-                <a href="{{route('admin.bookings.index')}}">bookings page</a><br>
+                <a href="{{route('admin.booking_index')}}">bookings page</a><br>
             </div>
     </div>
 

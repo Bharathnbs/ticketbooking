@@ -22,23 +22,31 @@
             </select><br>
 
             <label >location name</label><br>
-            <select  wire:model="location_id" wire:change="locationUpdate()"  class="form-control">
+            <select  wire:model="location_id"  class="form-control">
                 @foreach($locations as $loc)
                 <option value="{{$loc->id}}">{{$loc->name}}</option>
                 @endforeach
             </select><br>
             
             <label >theatre name</label><br>
-            <select wire:model="theatre_id" id="theatre_id" onchange="theatreUpdated()"  class="form-control"></select><br>
+            <select wire:model="theatre_id" class="form-control">
+                @foreach($theatres as $theatre)
+                <option value="{{$theatre->id}}">{{$theatre->name}}</option>
+                @endforeach
+            </select><br>
 
             <label >movie name</label><br>
-            <select wire:model="movie_id" id="movie_id" onchange="priceUpdated()"  class="form-control"></select><br> 
+            <select wire:model="movie_id" class="form-control">
+                @foreach($movies as $movie)
+                <option selected="selected" value="{{$movie->id}}">{{$movie->name}}</option>
+                @endforeach
+            </select><br> 
 
             <label >quantity</label><br>
-            <input id="quantity" type="number" onchange="priceUpdated()" wire:model="quantity" value=1  class="form-control"><br>
+            <input type="number" wire:model="quantity"  class="form-control"><br>
 
             <label >price</label><br>
-                <input id="price" type="text" wire:model="price"  class="form-control"><br>
+                <input type="text" wire:model="price"  class="form-control"><br>
             <label > total price</label><br>
             <input type="text" wire:model="total_price" id="total" class="form-control"><br>
             <input type="submit" wire:click="booking" class="btn btn-primary">

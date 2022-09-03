@@ -25,4 +25,5 @@
             @endforeach
         </tbody>
     </table>
+    <a href="{{route('admin.booking_create')}}">booking create</a>
 </div>
