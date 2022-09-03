@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\AdminsController;
 // use App\Http\Controllers\Admin\LocationsController;
 // use App\Http\Controllers\Admin\TheatresController;
 // use App\Http\Controllers\Admin\MoviesController;
-use App\Http\Controllers\Admin\BookingsController;
+// use App\Http\Controllers\Admin\BookingsController;
 use App\Http\Controllers\Admin\AdminLoginController;
 // use App\Http\Controllers\Admin\CustomersController;
 // use App\Http\Controllers\Admin\AdminDashboardController;
